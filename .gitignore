@@ -132,4 +132,6 @@ env.bak/
 venv.bak/
 pip-selfcheck.json
 
+### VSCODE ###
+.vscode/
 # End of https://www.gitignore.io/api/django,virtualenv
