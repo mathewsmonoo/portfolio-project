@@ -132,8 +132,17 @@ env.bak/
 venv.bak/
 pip-selfcheck.json
 
-### VSCODE ###
-.vscode/
-.vscode
-/.vscode
-# End of https://www.gitignore.io/api/django,virtualenv
+
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+
+# End of https://www.gitignore.io/api/django,virtualenv,visualstudiocode
