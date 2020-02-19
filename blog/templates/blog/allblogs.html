@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        {%load static%}
         <meta charset="utf-8" />
         <meta
             name="viewport"
@@ -12,7 +13,7 @@
             content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
         />
         <meta name="generator" content="Jekyll v3.8.6" />
-        <title>Mathews Monoo - WebSite</title>
+        <title>Mathews' Blog</title>
 
         <link
             rel="canonical"
@@ -76,13 +77,12 @@
                 }
             }
         </style>
-        <!-- Custom styles for this template -->
-        <link href="album.css" rel="stylesheet" />
+
     </head>
     <body>
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="#">Mathews Monoo</a>
+                <a class="navbar-brand" href="{% url 'home' %}">Mathews Monoo</a>
                 <button
                     class="navbar-toggler"
                     type="button"
@@ -96,11 +96,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
+
                         <li class="nav-item">
-                            <a class="nav-link " href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Resume</a>
+                            <a class="nav-link" href="{% static 'Resume.pdf' %}">Resume</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Blog</a>
@@ -129,8 +127,8 @@
                 <hr />
 
                 {% for blog in blogs.all %}
-                <a href="{{ blog_id }}.html"><h4>{{blog.title}}</h4></a>
-                <p>{{blog.pub_date.formatted}}</p>
+                <a href="{% url 'detail' blog.id%}"><h4>{{blog.title}}</h4></a>
+                <p>{{blog.pub_date_formatted}}</p>
                 <img class="img-fluid" height="230" width="230" src="{{blog.image.url}}" ></img>
                 <span>{{blog.summary}}(...)</span>
                 {% endfor %}

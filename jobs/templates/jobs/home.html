@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        {% load staticfiles %}
+        {% load static %}
         <meta charset="utf-8" />
         <meta
             name="viewport"
@@ -77,13 +77,12 @@
                 }
             }
         </style>
-        <!-- Custom styles for this template -->
-        <link href="album.css" rel="stylesheet" />
+
     </head>
     <body>
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="#">Mathews Monoo</a>
+                <a class="navbar-brand" href="{% url 'home' %}">Mathews Monoo</a>
                 <button
                     class="navbar-toggler"
                     type="button"
@@ -98,13 +97,12 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Home</a>
+                            <a class="nav-link" href="{% static 'Resume.pdf' %}"
+                                >Resume</a
+                            >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% static 'Resume.pdf' %}">Resume</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Blog</a>
+                            <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
                         </li>
                         <li class="nav-item">
                             <a
@@ -125,41 +123,42 @@
             <section class="jumbotron text-center">
                 <div class="container">
                     <h1>Hi, I'm Mathews!</h1>
-                    <img src="/media/assets/picture.png" />
+                    <img src="{% static 'Picture.png' %}"/>
                     <p class="lead text-muted">
                         This is my virtual portfolio, which was created during
-                        Django Course. <br />
+                        "Django 2.2 & Python | The Ultimate Web Development Bootcamp" Course. <br />
                         It will be used to share my projects and give some
                         information about me.
                     </p>
                     <p>
                         <a
                             href="mailto:m.monoo@aluno.ifsp.edu.br"
-                            class="btn btn-primary my-2"
+                            class="btn btn-outline-primary"
                             title="Send Email"
                             >Send me an Email!</a
                         >
                     </p>
                 </div>
             </section>
-            {% for job in jobs.all %}
-            <div class="album py-5 bg-light">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card mb-4 shadow-sm">
-                                <img src="{{job.image.url}}"/>
-                                <div class="card-body">
-                                    <p class="card-text">
-                                        {{job.summary}}
-                                    </p>
-                                </div>
+            <div class="container">
+                <div class="card-deck">
+                    {% for job in jobs.all %}
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div class="card h-100">
+                            <a href="#"
+                                ><img
+                                    class="img-fluid"
+                                    src="{{job.image.url}}"
+                                    alt=""
+                            /></a>
+                            <div class="card-body">
+                                <p class="card-text">{{job.summary}}</p>
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
-            {% endfor %}
         </main>
 
         <footer class="text-muted">
