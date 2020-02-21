@@ -77,12 +77,13 @@
                 }
             }
         </style>
-
     </head>
     <body>
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="{% url 'home' %}">Mathews Monoo</a>
+                <a class="navbar-brand" href="{% url 'home' %}"
+                    >Mathews Monoo</a
+                >
                 <button
                     class="navbar-toggler"
                     type="button"
@@ -102,7 +103,9 @@
                             >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
+                            <a class="nav-link" href="{% url 'allblogs' %}"
+                                >Blog</a
+                            >
                         </li>
                         <li class="nav-item">
                             <a
@@ -123,10 +126,14 @@
             <section class="jumbotron text-center">
                 <div class="container">
                     <h1>Hi, I'm Mathews!</h1>
-                    <img src="{% static 'Picture.png' %}"/>
+                    <img
+                        class="img-fluid rounded"
+                        src="{% static 'Picture.png' %}"
+                    />
                     <p class="lead text-muted">
                         This is my virtual portfolio, which was created during
-                        "Django 2.2 & Python | The Ultimate Web Development Bootcamp" Course. <br />
+                        "Django 2.2 & Python | The Ultimate Web Development
+                        Bootcamp" Course. <br />
                         It will be used to share my projects and give some
                         information about me.
                     </p>
@@ -145,11 +152,11 @@
                     {% for job in jobs.all %}
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                         <div class="card h-100">
-                            <a href="#"
+                            <a href="{{job.link}}"
                                 ><img
                                     class="img-fluid"
                                     src="{{job.image.url}}"
-                                    alt=""
+                                    alt="{{job.alt_text}}"
                             /></a>
                             <div class="card-body">
                                 <p class="card-text">{{job.summary}}</p>
